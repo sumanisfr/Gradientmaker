@@ -5,42 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event object Example </title>
     <style>
-        body {
-            background-color: rgb(130, 166, 228);
-        }
-        h1 {
-            text-align: center;
-            color: rgb(232, 207, 207);
-        }
-        section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 50px;
-        }
-        div {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 0 10px;
-            border: none;
-            border-radius: 5px;
-            color: rgb(196, 52, 52);
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .copycode {
-            padding: 10px;
-            border: 1px solid rgb(175, 75, 75);
-            border-radius: 5px;
-            color: white;
-            font-size: 16px;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
+      
+body {
+    background-color: rgb(130, 166, 228);
+}
+h1 {
+    text-align: center;
+    color: white;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    background-color: rgb(156, 177, 236);
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    cursor: pointer;
+    background-image: linear-gradient(to right,#72c958,#507ab4)
+}
+.copycode {
+    padding: 10px;
+    border: 3px solid rgb(235, 187, 187);
+    border-radius: 5px;
+    color: white;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 
 
     </style>
@@ -78,17 +82,19 @@
       };
 
         const handleButton1 = () => {
-            let rgb1 = hexValues();
+            rgb1 = hexValues();
             
             console.log(rgb1);
+            btn1.innerText = rgb1;
             document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
             copyDiv.textContent = `background-image: linear-gradient(to right,${rgb1},${rgb2})`;
 
         };
     
         const handleButton2 = () => {
-            let rgb2 = hexValues();
+            rgb2 = hexValues();
             console.log(rgb2);
+            btn2.innerText = rgb2;
             document.body.style.backgroundImage = `linear-gradient(to right,${rgb1},${rgb2})`;
             copyDiv.textContent = `background-image: linear-gradient(to right,${rgb1},${rgb2})`;
 
@@ -99,8 +105,10 @@
         btn1.addEventListener("click", handleButton1);
         btn2.addEventListener("click", handleButton2);
 
-       
+       copyDiv.addEventListener("click",()=>{
+        navigator.clipboard.writeText(copyDiv.innerText);
+       })
     </script>
 
 </body>
-</html>~
+</html>
